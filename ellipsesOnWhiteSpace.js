@@ -4,18 +4,18 @@
  return value: string
 */
 
-function ellipsesOnWhiteSpace (name){
-  if(name.length > 32){
-    let nameArr = name.split(' ');
-    let truncatedName = '';
+function ellipsesOnWhiteSpace (str){
 
-    truncatedName = nameArr.reduce(function(truncatedName, val, idx){
-      let addNextWord = truncatedName + ' ' + val
-      return (addNextWord.length < 29) ?  addNextWord : truncatedName;
+ if(str.length > 35){
+    let addMoreWords = true;
+    let truncatedName = str.split(' ').reduce(function(truncatedName, val, idx){
+      let addNextWord = truncatedName + ' ' + val;
+      if (addNextWord.length > 32){
+        addMoreWords = false;
+      }
+      return (addMoreWords) ?  addNextWord : truncatedName;
     });
-
-    name = truncatedName + '...';
+    str = truncatedName + '...';
   }
-
-  return name;
+  return str;
 }
