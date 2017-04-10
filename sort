@@ -1,0 +1,27 @@
+function sort(deals, comparisonCatagory, order){ // sort current array in place
+
+  var comparator = (order === 'ascending') ? comparatorAscending : comparatorDescending;
+
+  for(var i = 1; i < deals.length; i++){
+    var val  = deals[i];
+    var hole = i;
+    while((hole > 0 && comparator(val, deals[hole - 1], comparisonCatagory)) === -1){
+      deals[hole] = deals[hole - 1];
+      hole -= 1;
+    }
+
+    deals[hole] = val;
+  }
+
+  return deals;
+}
+
+function comparatorAscending(a, b, val){
+  // We only need to know if a is greater than b
+  return a[val] > b[val] ? -1 : 0;
+}
+
+function comparatorDescending(a, b, val){
+  // We only need to know if a is less than b
+  return a[val] < b[val] ? -1 : 0;
+}
