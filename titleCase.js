@@ -1,3 +1,3 @@
-str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-  return letter.toUpperCase();
+str = str.toLowerCase().replace(/^(.)|\s(.)/g,
+  function($1) { return $1.toUpperCase(); 
 });
